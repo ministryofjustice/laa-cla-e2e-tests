@@ -2,6 +2,8 @@
 
 This is the monorepo codebase for the end to end tests for [Civil Legal Advice](https://checklegalaid.service.gov.uk/) and [Find A Legal Adviser](https://find-legal-advice.justice.gov.uk/).
 
+![Application relationship diagram](https://www.lucidchart.com/publicSegments/view/2ae20038-503d-4899-8c04-e21378678b95/image.png)
+
 ## What is Civil Legal Advice?
 
 Civil Legal Advice is a service provided to the general public in England and Wales where users can obtain free legal advice from specialist legal providers relating to a range of Civil matters. This is subject to the user's matter being within scope of the service and the user passing the means eligibility test. The advice can either be given via telephone or in person depending upon the client’s unique circumstances.
@@ -55,4 +57,3 @@ The browser tests use these technologies:
 ### Running tests on Circle CI
 
 The tests on Circle CI are configured to run against our staging instances.
-
