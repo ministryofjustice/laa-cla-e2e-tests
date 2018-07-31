@@ -107,3 +107,22 @@ deployment of our applications are managed by external tools.
 ### Running tests on CircleCI
 
 Please see `.circleci/config.yml` for details on how this is done.
+
+## Roadmap
+Here's a very high level view of things we want to achieve.
+
+### Now
+- Create and destroy an isolated testing environment
+- Run tests against the isolated testing environment
+- Ensure tests can run on Circle CI against the isolated testing environment
+
+### Next
+- Test can run against a dedicated environment like _staging_
+- Test can run on a developer's local machine (Chrome with `headless` turned off) against any environment, e.g. the isolated testing environment or _staging_.
+- Test reports published and available after each test run
+
+### Later
+Nothing yet
+
+
+
