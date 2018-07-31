@@ -1,4 +1,4 @@
 #!/bin/bash -e
-docker-compose run start_services
-docker-compose run start_applications
+docker-compose --file ./tests/call-centre/docker-compose.yaml run start_services
+docker-compose --file ./tests/call-centre/docker-compose.yaml run start_applications
 echo "🎉 All up!"
