@@ -1,8 +1,7 @@
 {
-  "name": "cla-call-centre-e2e-tests",
+  "name": "laa-cla-e2e-tests",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "directories": {
     "test": "tests"
   },
