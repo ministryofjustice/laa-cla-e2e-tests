@@ -1,27 +1,58 @@
-version: '3'
+version: '3.2'
 services:
-  django:
+  start_services:
+    image: jwilder/dockerize
+    command: "-wait tcp://db:5432 -timeout 30s"
+    depends_on:
+      - db
+  start_applications:
+    image: jwilder/dockerize
+    command: "-wait tcp://cla_frontend:80 -wait tcp://cla_frontend:8005 -wait tcp://cla_backend:80 -timeout 180s"
+    depends_on:
+      - cla_frontend
+      - cla_backend
+
+  # services
+  db:
+    image: postgres:9.6-alpine
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: cla_backend
+
+  # applications
+  cla_frontend:
     build: https://github.com/ministryofjustice/cla_frontend.git#develop
     ports:
-      - "8001:80"
-      - "8005:8005"
+      - target: 80
+        published: 8001
+        protocol: tcp
+        mode: host
+      - target: 8005
+        published: 8005
+        protocol: tcp
+        mode: host
     environment:
       ENV: local
       DEBUG: "True"
       SECRET_KEY: CHANGE_ME
-      BACKEND_BASE_URI: http://clabackend
+      BACKEND_BASE_URI: http://cla_backend:80
       CALL_CENTRE_CLIENT_ID: b4b9220ffcb11ebfdab1
       CALL_CENTRE_SECRET_ID: 2df71313bdd38a2e1b815015e1b14387e7681d41
       CLA_PROVIDER_CLIENT_ID: 59657ed22d980251cdd3
       CALL_PROVIDER_SECRET_ID: 0494287c65bdf61d29f0eeed467ec8e090f0d80f
       SOCKETIO_SERVER_URL: /socket.io
     depends_on:
-      - clabackend
-
-  clabackend:
+      - cla_backend
+  cla_backend:
     build: https://github.com/ministryofjustice/cla_backend.git#develop
     ports:
-      - "8000:80"
+      - target: 80
+        published: 8000
+        protocol: tcp
+        mode: host
     environment:
       ENV: local
       DEBUG: "True"
@@ -37,15 +68,3 @@ services:
       ALLOWED_HOSTS: "*"
     depends_on:
       - db
-
-  db:
-    image: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: cla_backend
-
-  test:
-    build: .
-    depends_on:
-      - django
