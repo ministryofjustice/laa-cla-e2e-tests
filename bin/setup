@@ -1,3 +1,4 @@
 #!/bin/bash -e
 docker-compose run start_services
 docker-compose run start_applications
+echo "🎉 All up!"
