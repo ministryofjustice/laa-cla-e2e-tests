@@ -66,12 +66,12 @@ The browser tests use these technologies:
 | Service | Default host and port |
 |---|---|
 | `postgresql` | localhost:5432 |
-| `rabbitmq` | localhost:5672 and localhost:15672 for the management interface|
+| `rabbitmq` | localhost:5672<br/>localhost:15672 for the management interface|
 
 | Application | Default host and port |
 |---|---|
 | `cla_public` | localhost:5000 |
-| `cla_frontend` | ??? |
+| `cla_frontend` | localhost:8001<br/>localhost:8005 for websockets |
 | `cla_backend` | localhost:8000 |
 | `laalaa` | ??? |
 | `fala` | ??? |
@@ -123,6 +123,3 @@ Here's a very high level view of things we want to achieve.
 
 ### Later
 Nothing yet
-
-
-
