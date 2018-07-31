@@ -47,7 +47,7 @@ services:
     depends_on:
       - cla_backend
   cla_backend:
-    build: https://github.com/ministryofjustice/cla_backend.git#develop
+    image: ${ECR_ENDPOINT}/cla_backend:develop
     ports:
       - target: 80
         published: 8000

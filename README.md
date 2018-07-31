@@ -78,6 +78,16 @@ The browser tests use these technologies:
 
 ### Running tests locally
 
+#### Make sure you're logged into Amazon ECR registry with get-login
+
+1. Install AWS CLI
+1. Use `aws configure` to configure your AWS Access Key ID and AWS Secret Access Key, and set the default region name to `eu-west-2`.
+1. Run `aws ecr get-login --no-include-email`
+1. Copy and paste the resulting docker login command into a terminal to authenticate your Docker CLI to the registry. This command provides an authorization token that is valid for the specified registry for 12 hours.
+1. Run `aws ecr describe-repositories`. You should see a list of ECR repositories.
+
+#### Run the scripts
+
 ```
 $ bin/setup
 $ bin/run
