@@ -50,10 +50,60 @@ The browser tests use these technologies:
 
 ### Installation
 
+### Building blocks
+
+1. `bin/setup` will
+    1. Bring up<sup>*</sup> dependent services (PostgreSQL, RabbitMQ, Redis, etc.)
+    1. Run all pre-deployment steps (migrations, seeds, etc.)
+    1. Bring up<sup>*</sup> all applications
+1. `bin/run` will
+    1. Run tests against the running applications
+
+<sup>*</sup>"bring up" means start and wait until it is running and is reporting healthy.
+
+### Default ports
+
+| Service | Default host and port |
+|---|---|
+| `postgresql` | localhost:5432 |
+| `rabbitmq` | localhost:5672 and localhost:15672 for the management interface|
+
+| Application | Default host and port |
+|---|---|
+| `cla_public` | localhost:5000 |
+| `cla_frontend` | ??? |
+| `cla_backend` | localhost:8000 |
+| `laalaa` | ??? |
+| `fala` | ??? |
+
 ### Running tests locally
+
+```
+$ bin/setup
+$ bin/run
+```
 
 ### Running tests against staging
 
-### Running tests on Circle CI
+When running against a dedicated environment like _staging_, we need to skip the **setup** step, as the
+deployment of our applications are managed by external tools.
 
-The tests on Circle CI are configured to run against our staging instances.
+1. Deploy all desired application versions to the _staging_ environment.  
+   Each application should have a guideline on how to do this.
+1. Execute
+    ```
+    $ bin/run \
+      --cla_public=staging-public.cla.dsd.io \
+      --cla_backend=staging-backend.cla.dsd.io \
+      --cla_frontend=staging-frontend.cla.dsd.io \
+      --fala=staging.fala.dsd.io \
+      --laalaa=staging.laalaa.dsd.io
+    ```
+    or
+    ```
+    $ bin/run --configuration=config/staging.yml
+    ```
+
+### Running tests on CircleCI
+
+Please see `.circleci/config.yml` for details on how this is done.
