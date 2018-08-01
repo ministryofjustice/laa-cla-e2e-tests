@@ -1,0 +1,23 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:2.7-jessie
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install awscli
+          command: |
+            sudo pip install awscli
+            login="$(aws ecr get-login --region eu-west-1 --no-include-email)"
+            ${login}
+      - run:
+          name: Start applications
+          command: bin/setup
+      - run:
+          name: Run tests
+          command: bin/run_tests
+      - run:
+          name: Clean up running containers
+          command: bin/stop
