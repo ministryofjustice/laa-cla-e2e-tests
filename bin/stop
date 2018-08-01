@@ -1,3 +1,3 @@
 #!/bin/bash -e
-docker-compose stop
+docker-compose down
 echo "🎉 All services and apps stopped!"
