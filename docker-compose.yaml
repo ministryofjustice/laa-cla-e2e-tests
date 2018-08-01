@@ -7,8 +7,15 @@ services:
       - db
   start_applications:
     image: jwilder/dockerize
-    command: "-wait tcp://cla_frontend:80 -wait tcp://cla_frontend:8005 -wait tcp://cla_backend:80 -timeout 180s"
+    command: >
+      -wait tcp://cla_public:80
+      -wait tcp://cla_frontend:80
+      -wait tcp://cla_frontend:8005
+      -wait tcp://cla_backend:80
+      -wait-retry-interval 2s
+      -timeout 180s
     depends_on:
+      - cla_public
       - cla_frontend
       - cla_backend
 
@@ -23,6 +30,23 @@ services:
       POSTGRES_DB: cla_backend
 
   # applications
+  cla_public:
+    image: ${ECR_ENDPOINT}/cla_public:develop
+    ports:
+      - target: 80
+        published: 5000
+        protocol: tcp
+        mode: host
+    environment:
+      HOST_NAME: "0.0.0.0"
+      SECRET_KEY: CHANGE_ME
+      BACKEND_BASE_URI: http://cla-backend:80
+    depends_on:
+      - cla_backend
+    external_links:
+      # Alias the hostname to avoid underscores in domain names, as that causes the following error in cla_backend:
+      # "Invalid HTTP_HOST header: 'cla_backend'. The domain name provided is not valid according to RFC 1034/1035"
+      - "cla_backend:cla-backend"
   cla_frontend:
     build: https://github.com/ministryofjustice/cla_frontend.git#develop
     ports:
@@ -38,12 +62,16 @@ services:
       ENV: local
       DEBUG: "True"
       SECRET_KEY: CHANGE_ME
-      BACKEND_BASE_URI: http://cla_backend:80
+      BACKEND_BASE_URI: http://cla-backend:80
       CALL_CENTRE_CLIENT_ID: b4b9220ffcb11ebfdab1
       CALL_CENTRE_SECRET_ID: 2df71313bdd38a2e1b815015e1b14387e7681d41
       CLA_PROVIDER_CLIENT_ID: 59657ed22d980251cdd3
       CALL_PROVIDER_SECRET_ID: 0494287c65bdf61d29f0eeed467ec8e090f0d80f
       SOCKETIO_SERVER_URL: /socket.io
+    external_links:
+      # Alias the hostname to avoid underscores in domain names, as that causes the following error in cla_backend:
+      # "Invalid HTTP_HOST header: 'cla_backend'. The domain name provided is not valid according to RFC 1034/1035"
+      - "cla_backend:cla-backend"
     depends_on:
       - cla_backend
   cla_backend:

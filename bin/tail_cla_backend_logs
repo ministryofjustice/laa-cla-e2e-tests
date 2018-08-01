@@ -1,0 +1,2 @@
+#!/bin/bash -e
+docker-compose exec cla_backend sh -c 'tail -f /var/log/wsgi/* /var/log/nginx/cla_backend/*'
