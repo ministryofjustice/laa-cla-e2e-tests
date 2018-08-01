@@ -5,13 +5,13 @@ jobs:
       - image: circleci/python:2.7-jessie
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: Install awscli
           command: |
             sudo pip install awscli
             login="$(aws ecr get-login --region eu-west-1 --no-include-email)"
             ${login}
-      - setup_remote_docker
       - run:
           name: Start container and verify it's working
           command: |
