@@ -31,7 +31,7 @@ services:
 
   # applications
   cla_public:
-    image: ${ECR_ENDPOINT}/cla_public:develop
+    image: 627373361525.dkr.ecr.eu-west-1.amazonaws.com/get-access/cla_public:develop
     ports:
       - target: 80
         published: 5000
@@ -75,7 +75,7 @@ services:
     depends_on:
       - cla_backend
   cla_backend:
-    image: ${ECR_ENDPOINT}/cla_backend:develop
+    image: 627373361525.dkr.ecr.eu-west-1.amazonaws.com/get-access/cla_backend:develop
     ports:
       - target: 80
         published: 8000
@@ -96,3 +96,7 @@ services:
       ALLOWED_HOSTS: "*"
     depends_on:
       - db
+
+  test_call_centre:
+    build:
+      context: tests/call-centre
