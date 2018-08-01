@@ -1,4 +1,6 @@
 #!/bin/bash -e
+export ECR_ENDPOINT=627373361525.dkr.ecr.eu-west-1.amazonaws.com/get-access
+
 docker-compose run start_services
 docker-compose run start_applications
 echo "🎉 All up!"
