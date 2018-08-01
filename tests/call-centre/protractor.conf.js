@@ -8,7 +8,7 @@ exports.config = {
       binary: puppeteer.executablePath()
     }
   },
-  baseUrl: "http://django/",
+  baseUrl: "http://cla_frontend/",
   directConnect: true,
   framework: "jasmine",
   jasmineNodeOpts: {
