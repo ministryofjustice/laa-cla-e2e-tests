@@ -13,7 +13,11 @@ jobs:
             login="$(aws ecr get-login --region eu-west-1 --no-include-email)"
             ${login}
       - run:
-          name: Start container and verify it's working
-          command: |
-            set -x
-            bin/setup && bin/run_tests && bin/stop
+          name: Start applications
+          command: bin/setup
+      - run:
+          name: Run tests
+          command: bin/run_tests
+      - run:
+          name: Clean up running containers
+          command: bin/stop
