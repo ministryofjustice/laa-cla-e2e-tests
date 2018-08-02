@@ -15,8 +15,8 @@ jobs:
       - run:
           name: Build / pull call centre applications
           command: |
-            docker-compose pull cla_frontend
-            docker-compose build cla_backend
+            docker-compose pull cla_backend
+            docker-compose build cla_frontend
       - run:
           name: Start services and applications
           command: bin/setup
