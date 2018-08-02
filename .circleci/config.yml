@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test:
     docker:
       - image: circleci/python:2.7-jessie
     steps:
@@ -13,7 +13,10 @@ jobs:
             login="$(aws ecr get-login --region eu-west-1 --no-include-email)"
             ${login}
       - run:
-          name: Start applications
+          name: Build call centre applications
+          command: docker-compose build cla_backend cla_frontend
+      - run:
+          name: Start services and applications
           command: bin/setup
       - run:
           name: Run tests
