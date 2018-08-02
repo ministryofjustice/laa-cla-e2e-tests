@@ -100,3 +100,7 @@ services:
   test_call_centre:
     build:
       context: tests/call-centre
+
+  test_check_legal_aid:
+    build:
+      context: tests/check-legal-aid
