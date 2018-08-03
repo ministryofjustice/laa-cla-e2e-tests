@@ -86,11 +86,20 @@ The browser tests use these technologies:
 1. Copy and paste the resulting docker login command into a terminal to authenticate your Docker CLI to the registry. This command provides an authorization token that is valid for the specified registry for 12 hours.
 1. Run `aws ecr describe-repositories`. You should see a list of ECR repositories.
 
-#### Run the tests
+#### Run the tests in docker container
 The following command will (1) start services and applications, (2) run the tests and (3) stop the services and applications.
 
 ```
-$ bin/setup && bin/run_tests && bin/stop
+$ bin/setup && bin/run_tests_in_docker && bin/stop
+```
+
+#### Run the tests on local machine
+To run the Check Legal Aid tests locally, run the following commands:
+
+```
+cd tests/check-legal-aid
+npm install
+npm test
 ```
 
 ### Running tests against staging

@@ -13,11 +13,16 @@ jobs:
             login="$(aws ecr get-login --region eu-west-1 --no-include-email)"
             ${login}
       - run:
-          name: Start applications
+          name: Build / pull call centre applications
+          command: |
+            docker-compose pull
+            docker-compose build
+      - run:
+          name: Start services and applications
           command: bin/setup
       - run:
           name: Run tests
-          command: bin/run_tests
+          command: bin/run_tests_in_docker
       - run:
           name: Clean up running containers
           command: bin/stop
