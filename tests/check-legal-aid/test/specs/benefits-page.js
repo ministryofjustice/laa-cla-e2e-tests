@@ -72,32 +72,37 @@ module.exports = {
     client.ensureFormValidation();
   },
 
-  "Test outcomes": function(client) {
-    BENEFITS.forEach(function(item) {
-      var destination =
-        item === "other-benefit" ? "/additional-benefits" : "/review";
-      var waitElement =
-        item === "other-benefit" ? "#other-benefits-0" : ".answers-summary";
-      client
-        .click(util.format('input[value="%s"]', item))
-        .conditionalFormSubmit(true)
-        .assert.urlContains(
-          destination,
-          util.format(
-            "    - Goes to %s when `%s` is checked",
+  "Test outcomes":
+    "" +
+    function(client) {
+      BENEFITS.forEach(function(item) {
+        var destination =
+          item === "other-benefit" ? "/additional-benefits" : "/review";
+        var waitElement =
+          item === "other-benefit" ? "#other-benefits-0" : ".answers-summary";
+        client
+          .click(util.format('input[value="%s"]', item))
+          .conditionalFormSubmit(true)
+          .assert.urlContains(
             destination,
-            item
+            util.format(
+              "    - Goes to %s when `%s` is checked",
+              destination,
+              item
+            )
           )
-        )
-        .url(client.launch_url + "/benefits")
-        .waitForElementVisible(
-          "#benefits-0",
-          5000,
-          "    - Back to /benefits page"
-        )
-        .click(util.format('input[value="%s"]', item));
-    });
+          .url(client.launch_url + "/benefits")
+          .waitForElementVisible(
+            "#benefits-0",
+            5000,
+            "    - Back to /benefits page"
+          )
+          .click(util.format('input[value="%s"]', item));
+      });
 
+      client.end();
+    },
+  end: function(client) {
     client.end();
   }
 };
