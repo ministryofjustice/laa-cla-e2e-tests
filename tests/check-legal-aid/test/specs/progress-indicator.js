@@ -3,7 +3,7 @@
 var constants = require("../modules/constants");
 
 module.exports = {
-  "@disabled": false,
+  "@disabled": true,
   "Means test progress indicator": function(client) {
     client
       .startService()

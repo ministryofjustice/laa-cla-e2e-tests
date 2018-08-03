@@ -99,58 +99,60 @@ module.exports = {
         );
     },
 
-  "Validation of child benefit and child tax credit fields": function(client) {
-    function checkField(field, valueError) {
-      client.setValue(
-        util.format('input[name="%s-per_interval_value"]', field),
-        "100"
-      );
-      common.submitAndCheckForFieldError(client, [
-        {
-          name: field + "-per_interval_value",
-          errorText: "Please select a time period from the drop down"
-        }
-      ]);
-      client
-        .clearValue(util.format('input[name="%s-per_interval_value"]', field))
-        .selectDropdown(util.format("%s-interval_period", field), "per_week");
-      common.submitAndCheckForFieldError(
-        client,
-        [
+  "Validation of child benefit and child tax credit fields":
+    "" +
+    function(client) {
+      function checkField(field, valueError) {
+        client.setValue(
+          util.format('input[name="%s-per_interval_value"]', field),
+          "100"
+        );
+        common.submitAndCheckForFieldError(client, [
           {
-            name: field + "-interval_period",
-            errorText: valueError
+            name: field + "-per_interval_value",
+            errorText: "Please select a time period from the drop down"
           }
-        ],
-        "select"
-      );
-      client.setValue(
-        util.format('input[name="%s-per_interval_value"]', field),
-        "100"
-      );
-    }
+        ]);
+        client
+          .clearValue(util.format('input[name="%s-per_interval_value"]', field))
+          .selectDropdown(util.format("%s-interval_period", field), "per_week");
+        common.submitAndCheckForFieldError(
+          client,
+          [
+            {
+              name: field + "-interval_period",
+              errorText: valueError
+            }
+          ],
+          "select"
+        );
+        client.setValue(
+          util.format('input[name="%s-per_interval_value"]', field),
+          "100"
+        );
+      }
 
-    client
-      .startService()
-      .scopeDiagnosis(constants.SCOPE_PATHS.debtInScope)
-      .interstitialPage()
-      .aboutSetAllToNo(false, {
-        on_benefits: 1,
-        have_dependants: 1
-      })
-      .setValue('input[name="num_dependants"]', 1)
-      .conditionalFormSubmit(true)
-      .selectBenefit("child_benefit", false);
-    checkField("child_benefit", "Please provide an amount");
-    client
-      .conditionalFormSubmit(true)
-      .fillInIncome(undefined, undefined, false)
-      .clearValue('[name="your_income-child_tax_credit-per_interval_value"]');
-    checkField(
-      "your_income-child_tax_credit",
-      "Enter 0 if this doesn’t apply to you"
-    );
-  },
+      client
+        .startService()
+        .scopeDiagnosis(constants.SCOPE_PATHS.debtInScope)
+        .interstitialPage()
+        .aboutSetAllToNo(false, {
+          on_benefits: 1,
+          have_dependants: 1
+        })
+        .setValue('input[name="num_dependants"]', 1)
+        .conditionalFormSubmit(true)
+        .selectBenefit("child_benefit", false);
+      checkField("child_benefit", "Please provide an amount");
+      client
+        .conditionalFormSubmit(true)
+        .fillInIncome(undefined, undefined, false)
+        .clearValue('[name="your_income-child_tax_credit-per_interval_value"]');
+      checkField(
+        "your_income-child_tax_credit",
+        "Enter 0 if this doesn’t apply to you"
+      );
+    },
 
   "Should also see fields if benefits=no but children=yes": function(client) {
     client
