@@ -90,20 +90,14 @@ The browser tests use these technologies:
 The following command will (1) start services and applications, (2) run the tests and (3) stop the services and applications.
 
 ```
-$ bin/setup && bin/run_tests && bin/stop
+$ bin/setup && bin/run_tests_in_docker && bin/stop
 ```
 
 #### Run the tests on local machine
-Currentl, only the Check Legal Aid tests are setup to run on a local browser. To do this (1) start the services and applications, (2) set up the tests to run locally, (3) run the tests and (4) stop the services and applications when you're done.
-
-For example:
+To run the tests locally, run the following command:
 
 ```
-$bin/setup
-cd tests/check-legal-aid
-npm install
-npm test
-$bin/stop
+$bin/setup && bin/run_tests_on_host && bin/stop
 ```
 
 ### Running tests against staging

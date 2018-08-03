@@ -1,0 +1,5 @@
+#!/bin/bash -e
+cd tests/check-legal-aid
+npm install
+npm test
+echo "🎉 Tests finished!"
