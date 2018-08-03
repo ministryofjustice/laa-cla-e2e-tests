@@ -4,7 +4,6 @@ WORKDIR app
 COPY package.json package-lock.json ./
 
 RUN npm i
-# RUN npm run update-chromedriver
 
 # Add user so we don't need --no-sandbox.
 RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
@@ -16,7 +15,8 @@ RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
 RUN mkdir -p reports && chown pptruser reports
 USER pptruser
 
-COPY . ./
+COPY nightwatch.conf.js ./
+COPY test ./test
 
 EXPOSE 8084
 

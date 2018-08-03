@@ -13,8 +13,7 @@ module.exports = {
 
   test_settings: {
     default: {
-      silent: true,
-      launch_url: "http://cla_public",
+      launch_url: "http://localhost:5000",
       selenium_port: 9515,
       selenium_host: "localhost",
       default_path_prefix: "",
@@ -22,10 +21,19 @@ module.exports = {
       desiredCapabilities: {
         browserName: "chrome",
         chromeOptions: {
-          args: ["--headless", "--no-sandbox", "--disable-dev-shm-usage"],
-          binary: puppeteer.executablePath()
+          args: ["--no-sandbox"]
         },
         acceptSslCerts: true
+      }
+    },
+
+    docker: {
+      launch_url: "http://cla_public",
+      desiredCapabilities: {
+        chromeOptions: {
+          args: ["--headless", "--no-sandbox", "--disable-dev-shm-usage"],
+          binary: puppeteer.executablePath()
+        }
       }
     }
   }

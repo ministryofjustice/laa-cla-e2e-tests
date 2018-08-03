@@ -2,11 +2,9 @@
   "name": "laa-cla-e2e-tests",
   "version": "1.0.0",
   "description": "",
-  "directories": {
-    "test": "tests"
-  },
   "scripts": {
-    "test-docker": "nightwatch"
+    "test": "find test/specs/ -type f -exec nightwatch {} +",
+    "test-docker": "find test/specs/ -type f -exec nightwatch --env docker {} +"
   },
   "author": "",
   "license": "ISC",
