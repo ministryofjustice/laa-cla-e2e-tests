@@ -94,10 +94,12 @@ $ bin/setup && bin/run_tests_in_docker && bin/stop
 ```
 
 #### Run the tests on local machine
-To run the tests locally, run the following command:
+To run the Check Legal Aid tests locally, run the following commands:
 
 ```
-$bin/setup && bin/run_tests_on_host && bin/stop
+cd tests/check-legal-aid
+npm install
+npm test
 ```
 
 ### Running tests against staging

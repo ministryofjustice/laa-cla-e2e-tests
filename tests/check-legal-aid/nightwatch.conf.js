@@ -1,4 +1,13 @@
 var puppeteer = require("puppeteer");
+var launchUrl = process.env.CLA_PUBLIC_URL || "http://localhost:5000";
+var chromeOptions = {
+  args: ["--no-sandbox"]
+};
+
+if (process.env.HEADLESS) {
+  chromeOptions.binary = puppeteer.executablePath();
+  chromeOptions.args.push("--headless", "--disable-dev-shm-usage");
+}
 
 module.exports = {
   src_folders: "test/specs",
@@ -13,7 +22,7 @@ module.exports = {
 
   test_settings: {
     default: {
-      launch_url: "http://localhost:5000",
+      launch_url: launchUrl,
       selenium_port: 9515,
       selenium_host: "localhost",
       default_path_prefix: "",
@@ -21,20 +30,8 @@ module.exports = {
 
       desiredCapabilities: {
         browserName: "chrome",
-        chromeOptions: {
-          args: ["--no-sandbox"]
-        },
+        chromeOptions: chromeOptions,
         acceptSslCerts: true
-      }
-    },
-
-    docker: {
-      launch_url: "http://cla_public",
-      desiredCapabilities: {
-        chromeOptions: {
-          args: ["--headless", "--no-sandbox", "--disable-dev-shm-usage"],
-          binary: puppeteer.executablePath()
-        }
       }
     }
   }

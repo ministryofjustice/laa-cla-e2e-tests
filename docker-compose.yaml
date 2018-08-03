@@ -104,3 +104,6 @@ services:
   test_check_legal_aid:
     build:
       context: tests/check-legal-aid
+    environment:
+      CLA_PUBLIC_URL: http://cla_public
+      HEADLESS: "true"
