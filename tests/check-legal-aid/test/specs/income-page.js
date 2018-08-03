@@ -139,93 +139,104 @@ module.exports = {
     });
   },
 
-  "Test validation": function(client) {
-    client.ensureFormValidation();
+  "Test validation":
+    "" +
+    function(client) {
+      client.ensureFormValidation();
 
-    function checkForErrors(fields, errorText, includePartner) {
-      var persons = ["your"];
+      function checkForErrors(fields, errorText, includePartner) {
+        var persons = ["your"];
 
-      if (includePartner) {
-        persons.push("partner");
-      }
+        if (includePartner) {
+          persons.push("partner");
+        }
 
-      client.useXpath();
+        client.useXpath();
 
-      persons.map(function(person) {
-        fields.map(function(field) {
-          var fieldName = util.format(
-            "%s_income-%s-per_interval_value",
-            person,
-            field
-          );
-          client.assert.containsText(
-            util.format(
-              '//*[@name="%s"]/ancestor::*[contains(@class, "form-group")]',
-              fieldName
-            ),
-            errorText,
-            util.format(
-              "    - `%s` has error message: `%s`",
-              fieldName,
-              errorText
-            )
-          );
-        });
-      });
-
-      client.useCss();
-    }
-
-    function setValues(fields, suffix, value, includePartner) {
-      var persons = ["your"];
-
-      if (includePartner) {
-        persons.push("partner");
-      }
-
-      persons.map(function(person) {
-        fields.map(function(field) {
-          var fieldName = util.format("%s_income-%s-%s", person, field, suffix);
-
-          if (suffix === "interval_period") {
-            client.selectDropdown(fieldName, value);
-          } else {
-            client.setValue(
-              util.format("[name=%s]", fieldName),
-              value,
-              function() {
-                console.log(
-                  util.format("       • %s set to %s", fieldName, value)
-                );
-              }
+        persons.map(function(person) {
+          fields.map(function(field) {
+            var fieldName = util.format(
+              "%s_income-%s-per_interval_value",
+              person,
+              field
             );
-          }
+            client.assert.containsText(
+              util.format(
+                '//*[@name="%s"]/ancestor::*[contains(@class, "form-group")]',
+                fieldName
+              ),
+              errorText,
+              util.format(
+                "    - `%s` has error message: `%s`",
+                fieldName,
+                errorText
+              )
+            );
+          });
         });
-      });
-    }
 
-    checkForErrors(
-      EMPLOYMENT_QUESTIONS.EMPLOYED_MANDATORY,
-      "Please provide an amount",
-      true
-    );
-    checkForErrors(
-      ["working_tax_credit", "maintenance", "pension", "other_income"],
-      "Enter 0 if this doesn’t apply to you",
-      true
-    );
+        client.useCss();
+      }
 
-    setValues(EMPLOYMENT_QUESTIONS.ALL, "per_interval_value", 250, true);
+      function setValues(fields, suffix, value, includePartner) {
+        var persons = ["your"];
 
-    client.ensureFormValidation();
+        if (includePartner) {
+          persons.push("partner");
+        }
 
-    checkForErrors(
-      EMPLOYMENT_QUESTIONS.ALL,
-      "Please select a time period from the drop down",
-      true
-    );
-    setValues(EMPLOYMENT_QUESTIONS.ALL, "interval_period", "per_month", true);
+        persons.map(function(person) {
+          fields.map(function(field) {
+            var fieldName = util.format(
+              "%s_income-%s-%s",
+              person,
+              field,
+              suffix
+            );
 
-    client.conditionalFormSubmit(true).end();
+            if (suffix === "interval_period") {
+              client.selectDropdown(fieldName, value);
+            } else {
+              client.setValue(
+                util.format("[name=%s]", fieldName),
+                value,
+                function() {
+                  console.log(
+                    util.format("       • %s set to %s", fieldName, value)
+                  );
+                }
+              );
+            }
+          });
+        });
+      }
+
+      checkForErrors(
+        EMPLOYMENT_QUESTIONS.EMPLOYED_MANDATORY,
+        "Please provide an amount",
+        true
+      );
+      checkForErrors(
+        ["working_tax_credit", "maintenance", "pension", "other_income"],
+        "Enter 0 if this doesn’t apply to you",
+        true
+      );
+
+      setValues(EMPLOYMENT_QUESTIONS.ALL, "per_interval_value", 250, true);
+
+      client.ensureFormValidation();
+
+      checkForErrors(
+        EMPLOYMENT_QUESTIONS.ALL,
+        "Please select a time period from the drop down",
+        true
+      );
+      setValues(EMPLOYMENT_QUESTIONS.ALL, "interval_period", "per_month", true);
+
+      client.conditionalFormSubmit(true).end();
+    },
+
+  end: function(client) {
+    client.end();
   }
 };

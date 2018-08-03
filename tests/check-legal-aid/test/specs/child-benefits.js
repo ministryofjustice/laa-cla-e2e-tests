@@ -52,50 +52,52 @@ module.exports = {
       );
   },
 
-  "Child benefit fields": function(client) {
-    client
-      .back()
-      // additional benefits page
-      .waitForElementPresent(
-        "#benefits-0",
-        5000,
-        "  - Other Benefits page is ready"
-      )
-      .back()
-      // benefits page
-      .waitForElementPresent(
-        'input[name="benefits"][value="pension_credit"]',
-        5000,
-        "  - Go back to Benefits page"
-      )
-      .back()
-      // about page
-      .waitForElementPresent(
-        "#have_partner-0",
-        5000,
-        "  - Go back to About you page"
-      )
-      .setYesNoFields("have_children", 1)
-      .setValue('input[name="num_children"]', 1)
-      // benefits page
-      .conditionalFormSubmit(true)
-      .selectBenefit("child_benefit", false)
-      .selectBenefit("other-benefit", false)
-      .waitForElementVisible(
-        'input[name="child_benefit-per_interval_value"]',
-        5000,
-        "  - Child benefits amount should be visible"
-      )
-      .setValue('[name="child_benefit-per_interval_value"]', "12")
-      .selectDropdown("child_benefit-interval_period", "per_week")
-      .conditionalFormSubmit(true)
-      // income page
-      .waitForElementVisible(
-        '[name="your_income-child_tax_credit-per_interval_value"]',
-        5000,
-        "    - Child tax credits should be present"
-      );
-  },
+  "Child benefit fields":
+    "" +
+    function(client) {
+      client
+        .back()
+        // additional benefits page
+        .waitForElementPresent(
+          "#benefits-0",
+          5000,
+          "  - Other Benefits page is ready"
+        )
+        .back()
+        // benefits page
+        .waitForElementPresent(
+          'input[name="benefits"][value="pension_credit"]',
+          5000,
+          "  - Go back to Benefits page"
+        )
+        .back()
+        // about page
+        .waitForElementPresent(
+          "#have_partner-0",
+          5000,
+          "  - Go back to About you page"
+        )
+        .setYesNoFields("have_children", 1)
+        .setValue('input[name="num_children"]', 1)
+        // benefits page
+        .conditionalFormSubmit(true)
+        .selectBenefit("child_benefit", false)
+        .selectBenefit("other-benefit", false)
+        .waitForElementVisible(
+          'input[name="child_benefit-per_interval_value"]',
+          5000,
+          "  - Child benefits amount should be visible"
+        )
+        .setValue('[name="child_benefit-per_interval_value"]', "12")
+        .selectDropdown("child_benefit-interval_period", "per_week")
+        .conditionalFormSubmit(true)
+        // income page
+        .waitForElementVisible(
+          '[name="your_income-child_tax_credit-per_interval_value"]',
+          5000,
+          "    - Child tax credits should be present"
+        );
+    },
 
   "Validation of child benefit and child tax credit fields": function(client) {
     function checkField(field, valueError) {

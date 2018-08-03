@@ -17,6 +17,7 @@ module.exports = {
       selenium_port: 9515,
       selenium_host: "localhost",
       default_path_prefix: "",
+      skip_testcases_on_fail: false,
 
       desiredCapabilities: {
         browserName: "chrome",

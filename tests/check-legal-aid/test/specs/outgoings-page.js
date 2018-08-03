@@ -149,47 +149,53 @@ module.exports = {
       );
   },
 
-  Validation: function(client) {
-    OUTGOINGS_QUESTIONS.forEach(function(item) {
-      client.setValue(
-        util.format("input[name=%s-per_interval_value]", item),
-        "500"
-      );
+  Validation:
+    "" +
+    function(client) {
+      OUTGOINGS_QUESTIONS.forEach(function(item) {
+        client.setValue(
+          util.format("input[name=%s-per_interval_value]", item),
+          "500"
+        );
+        common.submitAndCheckForFieldError(client, [
+          {
+            name: item + "-per_interval_value",
+            errorText: "Please select a time period from the drop down"
+          }
+        ]);
+        client
+          .clearValue(util.format("input[name=%s-per_interval_value]", item))
+          .selectDropdown(item + "-interval_period", "per_month");
+        common.submitAndCheckForFieldError(client, [
+          {
+            name: item + "-per_interval_value",
+            errorText: OUTGOINGS_QUESTION_ERRORS[item]
+          }
+        ]);
+      });
+
       common.submitAndCheckForFieldError(client, [
         {
-          name: item + "-per_interval_value",
-          errorText: "Please select a time period from the drop down"
+          name: "income_contribution",
+          errorText: "Enter 0 if this doesn’t apply to you"
         }
       ]);
+
+      OUTGOINGS_QUESTIONS.forEach(function(item) {
+        client.setValue(
+          util.format("input[name=%s-per_interval_value]", item),
+          "500"
+        );
+      });
       client
-        .clearValue(util.format("input[name=%s-per_interval_value]", item))
-        .selectDropdown(item + "-interval_period", "per_month");
-      common.submitAndCheckForFieldError(client, [
-        {
-          name: item + "-per_interval_value",
-          errorText: OUTGOINGS_QUESTION_ERRORS[item]
-        }
-      ]);
-    });
+        .setValue('input[name="income_contribution"]', 0)
+        .conditionalFormSubmit(true)
+        .conditionalFormSubmit(true);
 
-    common.submitAndCheckForFieldError(client, [
-      {
-        name: "income_contribution",
-        errorText: "Enter 0 if this doesn’t apply to you"
-      }
-    ]);
+      client.end();
+    },
 
-    OUTGOINGS_QUESTIONS.forEach(function(item) {
-      client.setValue(
-        util.format("input[name=%s-per_interval_value]", item),
-        "500"
-      );
-    });
-    client
-      .setValue('input[name="income_contribution"]', 0)
-      .conditionalFormSubmit(true)
-      .conditionalFormSubmit(true);
-
+  end: function(client) {
     client.end();
   }
 };

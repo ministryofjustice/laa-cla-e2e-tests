@@ -7,7 +7,7 @@ module.exports = {
     client.startService();
   },
 
-  "@disabled": false,
+  "@disabled": true,
   "Scope diagnosis": function(client) {
     client.scopeDiagnosis(constants.SCOPE_PATHS.clinnegFaceToFace);
   },
@@ -47,6 +47,10 @@ module.exports = {
         "    - Filter contains category name"
       );
 
+    client.end();
+  },
+
+  end: function(client) {
     client.end();
   }
 };
