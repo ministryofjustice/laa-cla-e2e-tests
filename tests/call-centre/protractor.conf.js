@@ -25,5 +25,10 @@ exports.config = {
   jasmineNodeOpts: {
     showColors: true // Use colors in the command line report.
   },
-  specs: ["test/caseList.js"]
+  specs: [
+    "test/caseList.js",
+    "test/claAuth.js",
+    "test/scopeDiagnosis.js",
+    "test/suspendCase.js"
+  ]
 };
