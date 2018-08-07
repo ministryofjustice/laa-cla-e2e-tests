@@ -35,6 +35,7 @@ exports.config = {
     "test/feedback.js",
     "test/historicCases.js",
     "test/meansTest.js",
+    "test/multiCases.js",
     "test/scopeDiagnosis.js",
     "test/suspendCase.js"
   ]
