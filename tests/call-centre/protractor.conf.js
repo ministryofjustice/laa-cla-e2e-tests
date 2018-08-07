@@ -30,6 +30,7 @@ exports.config = {
     "test/claAuth.js",
     "test/scopeDiagnosis.js",
     "test/suspendCase.js",
-    "test/alternativeHelp.js"
+    "test/alternativeHelp.js",
+    "test/assignProvider.js"
   ]
 };
