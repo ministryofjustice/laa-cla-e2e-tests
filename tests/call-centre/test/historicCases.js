@@ -1,6 +1,6 @@
 (function() {
   "use strict";
-  var utils = require("./_utils");
+  var utils = require("./helpers/_utils");
   var CONSTANTS = require("../protractor.constants");
 
   var notice = element(

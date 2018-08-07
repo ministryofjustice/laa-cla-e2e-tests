@@ -1,8 +1,8 @@
 (function() {
   "use strict";
 
-  var utils = require("./_utils");
-  var modelsRecipe = require("./_modelsRecipe");
+  var utils = require("./helpers/_utils");
+  var modelsRecipe = require("./helpers/_modelsRecipe");
   var CONSTANTS = require("../protractor.constants");
 
   var providers = element.all(by.css("input[name=selected_providers]"));

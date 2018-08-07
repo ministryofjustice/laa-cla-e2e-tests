@@ -1,8 +1,8 @@
 (function() {
   "use strict";
 
-  var utils = require("./_utils"),
-    modelsRecipe = require("./_modelsRecipe"),
+  var utils = require("./helpers/_utils"),
+    modelsRecipe = require("./helpers/_modelsRecipe"),
     CONSTANTS = require("../protractor.constants");
 
   var assignForm = element(by.name("assign_provider_form"));

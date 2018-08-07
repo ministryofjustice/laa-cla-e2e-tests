@@ -2,7 +2,7 @@
   "use strict";
 
   var _ = require("lodash");
-  var CONSTANTS = require("../protractor.constants");
+  var CONSTANTS = require("../../protractor.constants");
 
   var createCase = function(
     el,
