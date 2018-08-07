@@ -33,6 +33,7 @@ exports.config = {
     "test/claAuth.js",
     "test/diversityMonitoring.js",
     "test/feedback.js",
+    "test/historicCases.js",
     "test/scopeDiagnosis.js",
     "test/suspendCase.js"
   ]
