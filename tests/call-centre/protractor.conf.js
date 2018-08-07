@@ -31,6 +31,7 @@ exports.config = {
     "test/scopeDiagnosis.js",
     "test/suspendCase.js",
     "test/alternativeHelp.js",
-    "test/assignProvider.js"
+    "test/assignProvider.js",
+    "test/case.js"
   ]
 };
