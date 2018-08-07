@@ -29,6 +29,7 @@ exports.config = {
     "test/caseList.js",
     "test/claAuth.js",
     "test/scopeDiagnosis.js",
-    "test/suspendCase.js"
+    "test/suspendCase.js",
+    "test/alternativeHelp.js"
   ]
 };
