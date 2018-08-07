@@ -26,12 +26,13 @@ exports.config = {
     showColors: true // Use colors in the command line report.
   },
   specs: [
-    "test/caseList.js",
-    "test/claAuth.js",
-    "test/scopeDiagnosis.js",
-    "test/suspendCase.js",
     "test/alternativeHelp.js",
     "test/assignProvider.js",
-    "test/case.js"
+    "test/case.js",
+    "test/caseList.js",
+    "test/claAuth.js",
+    "test/diversityMonitoring.js",
+    "test/scopeDiagnosis.js",
+    "test/suspendCase.js"
   ]
 };
