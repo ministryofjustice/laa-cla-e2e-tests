@@ -4,7 +4,6 @@ WORKDIR app
 COPY package.json package-lock.json ./
 
 RUN npm i
-# RUN npm run update-chromedriver
 
 # Add user so we don't need --no-sandbox.
 RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
@@ -21,4 +20,4 @@ COPY test ./test
 EXPOSE 8084
 
 ENTRYPOINT ["dumb-init", "--"]
-CMD ["npm", "run", "test"]
+CMD ["npm", "test"]

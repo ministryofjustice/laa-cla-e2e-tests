@@ -1,7 +1,7 @@
 {
   "name": "laa-cla-e2e-tests",
   "version": "1.0.0",
-  "description": "Runs the Civil Legal Aid call centre tests",
+  "description": "Runs the Case Handling System tests",
   "scripts": {
     "test": "protractor"
   },

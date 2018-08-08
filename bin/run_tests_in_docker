@@ -1,4 +1,4 @@
 #!/bin/bash -e
-docker-compose run test_call_centre
+docker-compose run test_case_handling_system
 docker-compose run test_check_legal_aid
 echo "🎉 Tests finished!"
