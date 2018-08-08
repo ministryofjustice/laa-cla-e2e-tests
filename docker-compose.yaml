@@ -9,14 +9,14 @@ services:
     image: jwilder/dockerize
     command: >
       -wait tcp://cla_public:80
-      -wait tcp://case_handling_system:80
-      -wait tcp://case_handling_system:8005
+      -wait tcp://cla_frontend:80
+      -wait tcp://cla_frontend:8005
       -wait tcp://cla_backend:80
       -wait-retry-interval 2s
       -timeout 180s
     depends_on:
       - cla_public
-      - case_handling_system
+      - cla_frontend
       - cla_backend
 
   # services
@@ -47,7 +47,7 @@ services:
       # Alias the hostname to avoid underscores in domain names, as that causes the following error in cla_backend:
       # "Invalid HTTP_HOST header: 'cla_backend'. The domain name provided is not valid according to RFC 1034/1035"
       - "cla_backend:cla-backend"
-  case_handling_system:
+  cla_frontend:
     build: https://github.com/ministryofjustice/cla_frontend.git#develop
     ports:
       - target: 80
@@ -101,7 +101,7 @@ services:
     build:
       context: tests/case-handling-system
     environment:
-      CLA_FRONTEND_URL: "http://case_handling_system/"
+      CLA_FRONTEND_URL: "http://cla_frontend/"
       HEADLESS: "true"
 
   test_check_legal_aid:
