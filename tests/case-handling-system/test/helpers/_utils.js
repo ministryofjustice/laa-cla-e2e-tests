@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  var CONSTANTS = require("../protractor.constants");
+  var CONSTANTS = require("../../protractor.constants");
 
   function login(login_path, user, pass) {
     var username = element(by.id("id_username"));

@@ -13,7 +13,7 @@ jobs:
             login="$(aws ecr get-login --region eu-west-1 --no-include-email)"
             ${login}
       - run:
-          name: Build / pull call centre applications
+          name: Build / pull Docker images
           command: |
             docker-compose pull
             docker-compose build

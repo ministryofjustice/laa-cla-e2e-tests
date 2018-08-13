@@ -97,9 +97,12 @@ services:
     depends_on:
       - db
 
-  test_call_centre:
+  test_case_handling_system:
     build:
-      context: tests/call-centre
+      context: tests/case-handling-system
+    environment:
+      CLA_FRONTEND_URL: "http://cla_frontend/"
+      HEADLESS: "true"
 
   test_check_legal_aid:
     build:
