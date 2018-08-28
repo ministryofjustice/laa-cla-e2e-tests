@@ -75,7 +75,7 @@ services:
     depends_on:
       - cla_backend
   cla_backend:
-    image: 627373361525.dkr.ecr.eu-west-1.amazonaws.com/get-access/cla_backend:develop
+    image: 627373361525.dkr.ecr.eu-west-1.amazonaws.com/get-access/cla_backend:master
     ports:
       - target: 80
         published: 8000
