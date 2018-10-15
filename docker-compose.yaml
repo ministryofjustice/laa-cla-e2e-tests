@@ -48,7 +48,7 @@ services:
       # "Invalid HTTP_HOST header: 'cla_backend'. The domain name provided is not valid according to RFC 1034/1035"
       - "cla_backend:cla-backend"
   cla_frontend:
-    build: https://github.com/ministryofjustice/cla_frontend.git#develop
+    image: 926803513772.dkr.ecr.eu-west-1.amazonaws.com/laa-get-access/laa-cla-frontend:master
     ports:
       - target: 80
         published: 8001
