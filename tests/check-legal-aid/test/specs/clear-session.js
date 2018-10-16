@@ -23,13 +23,7 @@ module.exports = {
 
   "Start page again": function(client) {
     // not using common.startPage because that clears cookies which would negate this test
-    client
-      .init()
-      .maximizeWindow()
-      .ensureCorrectPage("body", "/")
-      .click("a#start", function() {
-        console.log("     ⟡ Start button clicked");
-      });
+    client.init().maximizeWindow();
   },
 
   "Scope diagnosis again": function(client) {

@@ -1,5 +1,5 @@
 var puppeteer = require("puppeteer");
-var launchUrl = process.env.CLA_PUBLIC_URL || "http://localhost:5000";
+var baseUrl = process.env.CLA_PUBLIC_URL || "http://localhost:5000";
 var chromeOptions = {
   args: ["--no-sandbox"]
 };
@@ -22,7 +22,10 @@ module.exports = {
 
   test_settings: {
     default: {
-      launch_url: launchUrl,
+      launch_url: baseUrl + "/start",
+      globals: {
+        baseUrl: baseUrl
+      },
       selenium_port: 9515,
       selenium_host: "localhost",
       default_path_prefix: "",
