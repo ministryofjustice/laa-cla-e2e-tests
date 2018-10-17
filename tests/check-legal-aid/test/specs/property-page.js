@@ -91,7 +91,7 @@ module.exports = {
 
   "Add/remove properties": function(client) {
     client
-      .url(client.launch_url + "/property")
+      .url(client.globals.baseUrl + "/property")
       .ensureCorrectPage("#properties-0-is_main_home-0", "/property")
       .assert.elementPresent(
         "fieldset#property-set-1",

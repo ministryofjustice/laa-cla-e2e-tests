@@ -93,14 +93,14 @@ module.exports = {
   "Test outcomes": function(client) {
     client
       .aboutSetAllToNo(true)
-      .url(client.launch_url + "/about")
+      .url(client.globals.baseUrl + "/about")
       .waitForElementVisible("#have_partner-0", 5000, "  ⟡ Go back to /about");
     OUTCOMES.forEach(function(item) {
       var selection = {};
       selection[item.question] = 1;
       client
         .aboutSetAllToNo(true, selection)
-        .url(client.launch_url + "/about")
+        .url(client.globals.baseUrl + "/about")
         .waitForElementVisible(
           "#have_partner-0",
           5000,
