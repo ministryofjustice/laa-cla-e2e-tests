@@ -89,7 +89,7 @@
           gotoAltHelp();
 
           var f2f = element
-            .all(by.css('a[href^="http://find-legal-advice.justice.gov.uk/"]'))
+            .all(by.css('a[href^="https://find-legal-advice.justice.gov.uk/"]'))
             .get(0);
 
           f2f.click().then(function() {
