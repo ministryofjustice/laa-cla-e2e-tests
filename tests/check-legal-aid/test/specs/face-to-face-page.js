@@ -1,20 +1,8 @@
 "use strict";
 
 var constants = require("../modules/constants");
-var log = require("../modules/log");
-
-this.perform(function() {
-log.command('HELLO FROM THE FACE TO FACE PAGE...');
 
 module.exports = {
-  before : function(browser) {
-    console.log('About to click on START')
-  },
-
-  after : function(browser) {
-    console.log('Closing down...');
-  },
-
   "Start page": function(client) {
     client.startService();
   },
@@ -37,13 +25,12 @@ module.exports = {
   },
 
   "Find legal adviser search": function(client) {
-    log.command("HELLO");
     client
       .setValue('input[name="postcode"]', "w22dd", function() {
         console.log("     • Enter postcode `w22dd`");
       })
       .conditionalFormSubmit(true)
-      .assert.urlContains("/scope/refer/legal-adviser", "    - Page is NOT ready")
+      .assert.urlContains("/scope/refer/legal-adviser", "    - Page is ready")
       .waitForElementVisible(
         ".search-results-container",
         5000,
