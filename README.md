@@ -94,13 +94,48 @@ $ bin/setup && bin/run_tests_in_docker && bin/stop
 ```
 
 #### Run the tests on local machine
-To run the Check Legal Aid tests locally, run the following commands:
+First - run cla_backend and cla_public locally (copy the cla_public url, adding a '/start' at the end to ensure it is running locally)
 
+To run the Check Legal Aid tests locally, run the following commands:
 ```
 cd tests/check-legal-aid
 npm install
 npm test
 ```
+
+### Trouble shooting for local machine.
+Make sure you are in:
+```buildoutcfg
+tests/check-legal-aid
+```
+#####- Failing test due to an incorrect URL being generated. 
+
+   
+Go to:     
+    ```
+    tests/check-legal-aid/nightwatch.conf.js
+    ```
+
+And change:
+    ```
+    var baseUrl = process.env.CLA_PUBLIC_URL || localhost;
+    ```
+     
+With: 
+    ```
+     var baseUrl = process.env.CLA_PUBLIC_URL || "http://127.0.0.1:5000";
+    ```
+
+#####- If you receive the following error message start the chrome driver manually:
+```
+ Error retrieving a new session from the selenium server   
+```
+ - open a new terminal and paste the following:
+    
+```buildoutcfg
+./node_modules/chromedriver/bin/chromedriver 
+```
+
 
 ### Running tests against staging
 
