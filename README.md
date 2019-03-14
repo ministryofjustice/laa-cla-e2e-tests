@@ -103,7 +103,29 @@ npm install
 npm test
 ```
 
+#### Run single test on local machine
+To run a single test on your local machine go to:
+```tests/check-legal-aid/package.json```
+Inside 'scripts' create a new test name with a path to your test.
+```
+{
+  "name": "laa-cla-e2e-tests",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "find test/specs/ -type f -exec nightwatch {} +",
+    "name-of-new-test": "nightwatch test/specs/face-to-face-page.js",
+    "test-docker": "find test/specs/ -type f -exec nightwatch --verbose {} +"
+  },
+```
+
+To run your test in the terminal run:
+```buildoutcfg
+npm run name-of-new-test
+```
+
 ### Trouble shooting for local machine.
+Check you are running cla_back end and cla_public locally
 Make sure you are in:
 ```buildoutcfg
 tests/check-legal-aid
@@ -130,7 +152,13 @@ With:
 ```
  Error retrieving a new session from the selenium server   
 ```
- - open a new terminal and paste the following:
+ - open a new terminal
+ - make sure you are inside: 
+ ```buildoutcfg
+tests/check-legal-aid
+```
+  
+- paste the following
     
 ```buildoutcfg
 ./node_modules/chromedriver/bin/chromedriver 
