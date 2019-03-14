@@ -56,7 +56,7 @@ module.exports = {
           ".google-analytics-postcode-redaction",
             client.assert.equal(
             result.value, 'http://127.0.0.1:5000/scope/refer/legal-adviser?category=clinneg',
-            "    - Google Analytics postcode redaction"
+            "    - Google Analytics postcode has been redacted"
          );
       });
 
