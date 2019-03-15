@@ -8,9 +8,9 @@ module.exports = {
   },
 
   "@disabled": false,
-  "Scope diagnosis": function(client) {
-    client.scopeDiagnosis(constants.SCOPE_PATHS.clinnegFaceToFace);
-  },
+//  "Scope diagnosis": function(client) {
+//    client.scopeDiagnosis(constants.SCOPE_PATHS.clinnegFaceToFace);
+//  },
 
   "Face-to-face page": function(client) {
     client
