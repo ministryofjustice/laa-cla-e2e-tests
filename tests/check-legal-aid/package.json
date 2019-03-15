@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "test": "find test/specs/ -type f -exec nightwatch {} +",
-    "test-docker": "find test/specs/ -type f -exec nightwatch --verbose {} +"
+    "test-docker": "find test/specs/ -type f -exec nightwatch {} +"
   },
   "author": "",
   "license": "ISC",
