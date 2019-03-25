@@ -23,6 +23,9 @@ module.exports = {
         }
       )
       .checkFlashMessage();
+      client.source(function(result){
+        console.log(result.value);
+      });
   },
 
   "Find legal adviser search": function(client) {
