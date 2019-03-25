@@ -2,7 +2,7 @@ var puppeteer = require("puppeteer");
 var baseUrl = process.env.CLA_PUBLIC_URL || "http://localhost:5000";
 console.log("---BASE_URL IS " + baseUrl);
 var chromeOptions = {
-  args: ["--no-sandbox"]
+  args: ["--no-sandbox", '--whitelisted-ips', '--disable-extensions']
 };
 
 if (process.env.HEADLESS) {
@@ -28,7 +28,7 @@ module.exports = {
         baseUrl: baseUrl
       },
       selenium_port: 9515,
-      selenium_host: "localhost",
+      selenium_host: "127.0.0.1",
       default_path_prefix: "",
       skip_testcases_on_fail: false,
 
