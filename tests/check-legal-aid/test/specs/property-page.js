@@ -85,8 +85,18 @@ module.exports = {
     client
       .click(
         util.format('input[name="%s"][value="%s"]', "properties-0-is_rented", 0)
-      )
-      .conditionalFormSubmit(true);
+      );
+
+      // Sometimes if the element is not in view then selenium doesn't allow you to manipulate
+      // This makes sure the content start is in view as that's where the error message box appears
+      client
+        .execute(
+          'var mainContentElements = document.getElementsByClassName("main-content");' +
+          'mainContentElements[0].scrollIntoView(true);'
+        );
+
+      client.pause(500);
+      client.conditionalFormSubmit(true);
   },
 
   "Add/remove properties": function(client) {
