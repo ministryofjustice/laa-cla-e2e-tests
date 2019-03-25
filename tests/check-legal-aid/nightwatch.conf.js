@@ -1,5 +1,6 @@
 var puppeteer = require("puppeteer");
 var baseUrl = process.env.CLA_PUBLIC_URL || "http://localhost:5000";
+console.log("---BASE_URL IS " + baseUrl);
 var chromeOptions = {
   args: ["--no-sandbox"]
 };
