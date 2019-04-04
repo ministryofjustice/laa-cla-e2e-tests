@@ -41,6 +41,14 @@ services:
       HOST_NAME: "0.0.0.0"
       SECRET_KEY: CHANGE_ME
       BACKEND_BASE_URI: http://cla-backend:80
+      ZENDESK_API_USERNAME: ""
+      ZENDESK_API_TOKEN: ""
+      SMTP_HOST: ""
+      SMTP_USER: ""
+      SMTP_PASSWORD: ""
+      RAVEN_CONFIG_DSN: ""
+      RAVEN_CONFIG_SITE: ""
+      LAALAA_API_HOST: ""
     depends_on:
       - cla_backend
     external_links:
