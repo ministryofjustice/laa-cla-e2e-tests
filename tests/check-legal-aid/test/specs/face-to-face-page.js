@@ -1,13 +1,13 @@
 "use strict";
 
 var constants = require("../modules/constants");
+var nightwatch = require("../../nightwatch.conf")
 
 module.exports = {
   "Start page": function(client) {
     client.startService();
   },
-
-  "@disabled": true,
+  "@disabled": false,
   "Scope diagnosis": function(client) {
     client.scopeDiagnosis(constants.SCOPE_PATHS.clinnegFaceToFace);
   },
@@ -26,8 +26,8 @@ module.exports = {
 
   "Find legal adviser search": function(client) {
     client
-      .setValue('input[name="postcode"]', "w22dd", function() {
-        console.log("     • Enter postcode `w22dd`");
+      .setValue('input[name="postcode"]', "SW1A 1AA", function() {
+        console.log("     • Enter postcode `SW1A 1AA`");
       })
       .conditionalFormSubmit(true)
       .assert.urlContains("/scope/refer/legal-adviser", "    - Page is ready")
@@ -47,6 +47,15 @@ module.exports = {
         "    - Filter contains category name"
       );
 
+
+     client.executeAsync(function(done) {
+         ga(function(tracker) {
+           done(tracker.get('location'))
+         });
+      }, function(result) {
+        var url = nightwatch.test_settings.default.globals.baseUrl + "/scope/refer/legal-adviser?category=clinneg";
+        client.assert.equal(result.value, url,"    - Google Analytics postcode has been redacted");
+      });
     client.end();
   },
 
