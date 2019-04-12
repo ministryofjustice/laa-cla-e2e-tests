@@ -1,5 +1,5 @@
 #!/bin/bash -e
-docker-compose run test_case_handling_system
-docker-compose run test_check_legal_aid
+# docker-compose run test_case_handling_system
+# docker-compose run test_check_legal_aid
 docker-compose run behave
 echo "🎉 Tests finished!"
