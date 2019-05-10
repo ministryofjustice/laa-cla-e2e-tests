@@ -11,7 +11,7 @@
   "devDependencies": {
     "chromedriver": "^2.40.0",
     "lodash": "~4.17.4",
-    "moment": "^2.22.2",
+    "moment": "^2.24.0",
     "nightwatch": "^0.9.21",
     "puppeteer": "^1.15.0"
   }
