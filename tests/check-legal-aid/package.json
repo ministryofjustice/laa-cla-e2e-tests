@@ -12,7 +12,7 @@
     "chromedriver": "^2.40.0",
     "lodash": "~4.17.11",
     "moment": "^2.24.0",
-    "nightwatch": "^0.9.21",
+    "nightwatch": "^1.0.19",
     "puppeteer": "^1.15.0"
   }
 }
