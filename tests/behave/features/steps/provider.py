@@ -11,7 +11,7 @@ from selenium.webdriver.common.by import By
 
 def open_csvupload(context):
     get_frontend_url(context, '/provider/csvupload/')
-    WebDriverWait(context.driver, 5).until(EC.presence_of_element_located((By.NAME, "csvfile")))
+    WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.NAME, "csvfile")))
 
 def csvupload_months(context):
     return Select(context.driver.find_element_by_xpath("//select[@ng-model='month']"))
@@ -35,7 +35,7 @@ def step_impl(context):
     if row:
         # if yes, we "Upload Again"
         row.find_element_by_xpath("//a[contains(text(), 'Upload Again')]").click()
-        upload = WebDriverWait(row, 5).until(EC.presence_of_element_located((By.NAME, "csvfile")))
+        upload = WebDriverWait(row, 10).until(EC.presence_of_element_located((By.NAME, "csvfile")))
     else:
         # otherwise, we upload at the top of the page
         upload = context.driver.find_element_by_name("csvfile")

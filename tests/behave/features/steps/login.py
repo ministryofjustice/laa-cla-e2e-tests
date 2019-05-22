@@ -13,4 +13,4 @@ def step_impl(context):
     # credentials are seeded by cla_backend
     login_to_cla_frontend(context, username="test_ces", password="test_ces")
 
-    WebDriverWait(context.driver, 5).until(EC.presence_of_element_located((By.ID, "case-search")))
+    WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.ID, "case-search")))
