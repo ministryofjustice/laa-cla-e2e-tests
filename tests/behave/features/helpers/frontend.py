@@ -3,7 +3,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 def get_frontend_url(context, path):
-    url = os.environ["CLA_FRONTEND_URL"] + '/' + path
+    url = os.environ["CLA_FRONTEND_URL"].strip('/') + '/' + path.strip('/')
     context.driver.get(url)
 
 def login_to_cla_frontend(context, username, password):
