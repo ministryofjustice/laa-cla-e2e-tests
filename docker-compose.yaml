@@ -122,3 +122,5 @@ services:
   behave:
     build:
       context: tests/behave
+    environment:
+      CLA_FRONTEND_URL: "http://cla_frontend/"
