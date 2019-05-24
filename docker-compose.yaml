@@ -83,7 +83,7 @@ services:
     depends_on:
       - cla_backend
   cla_backend:
-    image: 926803513772.dkr.ecr.eu-west-1.amazonaws.com/laa-get-access/laa-cla-backend:master
+    image: ${CLA_BACKEND_IMAGE:-926803513772.dkr.ecr.eu-west-1.amazonaws.com/laa-get-access/laa-cla-backend:master}
     ports:
       - target: 80
         published: 8000
@@ -122,3 +122,5 @@ services:
   behave:
     build:
       context: tests/behave
+    environment:
+      CLA_FRONTEND_URL: "http://cla_frontend/"

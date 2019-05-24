@@ -13,6 +13,5 @@ COPY requirements.txt ./
 RUN pip3 install --user -r requirements.txt
 
 COPY . .
-RUN which python3
 
 CMD ["/usr/bin/python3", "-m", "behave"]

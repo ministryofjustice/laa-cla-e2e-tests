@@ -8,4 +8,4 @@ def before_feature(context, feature):
     context.driver = webdriver.Firefox(options=options)
 
 def after_feature(context, feature):
-    context.driver.quit() 
+    context.driver.quit()
