@@ -118,3 +118,7 @@ services:
     environment:
       CLA_PUBLIC_URL: http://cla_public
       HEADLESS: "true"
+
+  behave:
+    build:
+      context: tests/behave
