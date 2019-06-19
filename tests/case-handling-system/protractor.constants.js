@@ -65,7 +65,8 @@
       remaining: {
         email: 'foo.bar@foobar.com',
         vulnerable_user: true,
-        contact_for_research: true
+        contact_for_research: true,
+        contact_for_research_methods: ["SMS", "PHONE"]
       },
       full: {}
     },

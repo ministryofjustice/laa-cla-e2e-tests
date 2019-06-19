@@ -113,6 +113,8 @@
       if (name === "adaptations") {
         selectMultiOption(values[name], "s2id_autogen5");
         // values[name].map(selectMultiOption);
+      } else if (name === "contact_for_research_methods") {
+        selectMultiOption(values[name], "s2id_autogen11");
       } else if (name === "spoke_to") {
         selectRadioOption(values[name], name);
       } else if (filterSelects.indexOf(name) > -1) {
@@ -127,6 +129,7 @@
       }
     }
     // save details
+    browser.sleep(300);
     element(by.name(btnName)).click();
     utils.scrollTo(element(by.css(viewCard))); // Firefox fix!
   }
@@ -189,6 +192,12 @@
         expect(
           element(by.css('[ng-if="selected_adaptations.length"]')).getText()
         ).toContain(value[i]);
+      }
+    } else if (model === "personal_details.contact_for_research_methods") {
+      for (var i in value) {
+        expect(
+          element(by.css('[ng-if="personal_details.contact_for_research && personal_details.contact_for_research_methods"]')).getText()
+        ).toContain(value[i].toLowerCase());
       }
     } else if (model === "third_party.spoke_to") {
       expect(
