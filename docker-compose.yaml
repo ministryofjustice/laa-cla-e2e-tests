@@ -31,7 +31,7 @@ services:
 
   # applications
   cla_public:
-    image: 926803513772.dkr.ecr.eu-west-1.amazonaws.com/laa-get-access/laa-cla-public:master
+    image: 926803513772.dkr.ecr.eu-west-1.amazonaws.com/laa-get-access/laa-cla-public:feature-LGA-709_add-page-title-class
     ports:
       - target: 80
         published: 5000
