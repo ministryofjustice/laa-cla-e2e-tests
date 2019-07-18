@@ -10,7 +10,7 @@ exports.command = function(scenario, callback) {
 
     client
       .ensureCorrectPage('body.js-enabled', '/scope/diagnosis', {
-        'h1': 'Choose the area you most need help with'
+        'h1.page-title': 'Choose the area you most need help with'
       })
       .useXpath()
     ;

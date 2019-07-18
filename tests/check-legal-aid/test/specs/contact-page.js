@@ -41,7 +41,7 @@ module.exports = {
         "    - Confirmation block exists"
       )
       .assert.containsText(
-        "h1",
+        "h1.page-title",
         "Your details have been submitted",
         "    - Confirmation title exists"
       );

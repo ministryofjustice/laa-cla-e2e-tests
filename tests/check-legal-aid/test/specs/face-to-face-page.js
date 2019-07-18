@@ -18,7 +18,7 @@ module.exports = {
         ".legal-adviser-search",
         "/scope/refer/legal-adviser",
         {
-          h1: "A legal adviser may be able to help you"
+          "h1.page-title": "A legal adviser may be able to help you"
         }
       )
       .checkFlashMessage();

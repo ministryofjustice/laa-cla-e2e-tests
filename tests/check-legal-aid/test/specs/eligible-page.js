@@ -26,7 +26,7 @@ module.exports = {
   Benefits: function(client) {
     client
       .ensureCorrectPage("#benefits-0", "/benefits", {
-        h1: "Your benefits",
+        "h1.page-title": "Your benefits",
         "fieldset legend": "Which benefits do you receive?"
       })
       .click('input[value="income_support"]', function() {
@@ -43,7 +43,7 @@ module.exports = {
 
   "Eligible page (request callback)": function(client) {
     client.ensureCorrectPage(".contact-form", "/result/eligible", {
-      h1: "Contact Civil Legal Advice"
+      "h1.page-title": "Contact Civil Legal Advice"
     });
   },
 

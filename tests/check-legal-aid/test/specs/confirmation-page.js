@@ -29,7 +29,7 @@ var checkCallbackTime = function(client, then, time) {
       console.log("     ⟡ Form submitted");
     })
     .ensureCorrectPage("header.confirmation", "/result/confirmation", {
-      h1: "We will call you back",
+      "h1.page-title": "We will call you back",
       ".main-content": formattedCallbackTime
     })
     .checkFlashMessage();

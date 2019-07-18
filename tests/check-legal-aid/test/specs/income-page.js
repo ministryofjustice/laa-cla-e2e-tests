@@ -38,7 +38,7 @@ module.exports = {
       'input[name="your_income-other_income-per_interval_value"]',
       "/income",
       {
-        h1: "Your money"
+        "h1.page-title": "Your money"
       }
     );
   },
@@ -100,7 +100,7 @@ module.exports = {
       .setYesNoFields("partner_is_employed", 1)
       .conditionalFormSubmit(true)
       .assert.containsText(
-        "h1",
+        "h1.page-title",
         "You and your partner’s money",
         "    - Page heading is correct"
       )

@@ -10,7 +10,7 @@ exports.command = function(shouldSubmitForm, callback) {
 
     client
       .ensureCorrectPage('.answers-summary', '/review', {
-        'h1': 'Review your answers'
+        'h1.page-title': 'Review your answers'
       })
       .conditionalFormSubmit(true)
     ;

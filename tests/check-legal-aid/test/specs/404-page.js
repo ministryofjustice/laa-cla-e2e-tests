@@ -7,7 +7,7 @@ module.exports = {
       .init(client.launch_url + '/notfound')
       .maximizeWindow()
       .ensureCorrectPage('body', '/notfound', {
-        'h1': 'Sorry, this page doesn’t exist'
+        'h1.page-title': 'Sorry, this page doesn’t exist'
       })
       .end()
     ;

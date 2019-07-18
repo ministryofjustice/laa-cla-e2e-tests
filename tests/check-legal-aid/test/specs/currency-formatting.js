@@ -45,7 +45,7 @@ module.exports = {
 
   "Property page": function(client) {
     client.ensureCorrectPage("#properties-0-is_main_home-0", "/property", {
-      h1: "Your property"
+      "h1.page-title": "Your property"
     });
   },
 
