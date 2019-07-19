@@ -33,7 +33,7 @@ module.exports = {
 
   "Savings page": function(client) {
     client.ensureCorrectPage('input[name="savings"]', "/savings", {
-      h1: "Your savings"
+      "h1.page-title": "Your savings"
     });
   },
 
@@ -53,7 +53,7 @@ module.exports = {
       )
       .conditionalFormSubmit(true)
       .ensureCorrectPage("body.js-enabled", "/savings", {
-        h1: "You and your partner’s savings",
+        "h1.page-title": "You and your partner’s savings",
         body:
           "Any cash, savings or investments held in your name, your partner’s name or both your names"
       });

@@ -29,7 +29,7 @@ module.exports = {
         })
         .useCss()
         .ensureCorrectPage('body.js-enabled', item.url, {
-          'h1': item.headline
+          'h1.page-title': item.headline
         })
       ;
     });

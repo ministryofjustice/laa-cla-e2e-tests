@@ -28,7 +28,7 @@ module.exports = {
 
   "Property page": function(client) {
     client.ensureCorrectPage("#properties-0-is_main_home-0", "/property", {
-      h1: "Your property"
+      "h1.page-title": "Your property"
     });
   },
 
@@ -44,7 +44,7 @@ module.exports = {
       )
       .conditionalFormSubmit(true)
       .ensureCorrectPage("#properties-0-is_main_home-0", "/property", {
-        h1: "You and your partner’s property",
+        "h1.page-title": "You and your partner’s property",
         body:
           "Please tell us about any property owned by you, your partner or both of you"
       });

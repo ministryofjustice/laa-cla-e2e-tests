@@ -30,7 +30,7 @@ module.exports = {
 
   "Additional Benefits page": function(client) {
     client.ensureCorrectPage("#other_benefits-0", "/additional-benefits", {
-      h1: "Your additional benefits"
+      "h1.page-title": "Your additional benefits"
     });
   },
 
@@ -50,7 +50,7 @@ module.exports = {
       .waitForElementVisible("#benefits-0", 5000, "  - Back to /benefits")
       .conditionalFormSubmit(true)
       .assert.containsText(
-        "h1",
+        "h1.page-title",
         "You and your partner’s additional benefits",
         "  - Page heading is correct (includes partner)"
       );

@@ -11,7 +11,7 @@ exports.command = function(shouldSubmitForm, callback) {
 
     client
       .ensureCorrectPage('#have_partner-0', '/about', {
-        'h1': 'About you'
+        'h1.page-title': 'About you'
       })
       .setYesNoFields(ABOUT_YOU_QUESTIONS, 1, function() {
         console.log('     • Setting all values to ‘Yes’');

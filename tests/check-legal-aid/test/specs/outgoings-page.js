@@ -35,7 +35,7 @@ module.exports = {
         'input[name="your_income-other_income-per_interval_value"]',
         "/income",
         {
-          h1: "Your money coming in"
+          "h1.page-title": "Your money coming in"
         }
       )
       .setValue('input[name="your_income-maintenance-per_interval_value"]', 0)
@@ -49,7 +49,7 @@ module.exports = {
       'input[name="income_contribution"]',
       "/outgoings",
       {
-        h1: "Your outgoings"
+        "h1.page-title": "Your outgoings"
       }
     );
   },
@@ -123,7 +123,7 @@ module.exports = {
       .conditionalFormSubmit(true)
       .fillInIncome(true, true, true)
       .assert.containsText(
-        "h1",
+        "h1.page-title",
         "You and your partner’s outgoings",
         "  - Has correct heading"
       )

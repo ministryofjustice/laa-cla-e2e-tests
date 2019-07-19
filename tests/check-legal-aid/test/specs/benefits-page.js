@@ -27,7 +27,7 @@ module.exports = {
 
   Benefits: function(client) {
     client.ensureCorrectPage("#benefits-0", "/benefits", {
-      h1: "Your benefits",
+      "h1.page-title": "Your benefits",
       "fieldset legend": "Which benefits do you receive?"
     });
   },
@@ -35,7 +35,7 @@ module.exports = {
   "Context-dependent text and headline for partner": function(client) {
     client.assert
       .doesNotContainText(
-        "h1",
+        "h1.page-title",
         "You and your partner’s benefits",
         "  - Title is correct"
       )
@@ -57,7 +57,7 @@ module.exports = {
       })
       .waitForElementVisible("#benefits-0", 5000, "    - On /benefits page")
       .assert.containsText(
-        "h1",
+        "h1.page-title",
         "You and your partner’s benefits",
         "    - Title is correct"
       )
