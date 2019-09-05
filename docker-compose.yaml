@@ -128,6 +128,7 @@ services:
       FALA_URL: "http://fala:8000"
     depends_on:
       - fala
+
   fala:
     image: ${FALA_IMAGE:-926803513772.dkr.ecr.eu-west-1.amazonaws.com/laa-get-access/laa-fala-webapp:master}
     ports:
