@@ -1,2 +1,4 @@
 node_modules/
 reports/
+tests/behave/env
+tests/behave/geckodriver.log
