@@ -23,12 +23,15 @@ jobs:
       - run:
           name: Run cucumber tests
           command: bin/run_cucumber_in_docker
+          when: always
       - run:
           name: Run javascript tests
           command: bin/run_tests_in_docker
+          when: always
       - run:
           name: Clean up running containers
           command: bin/stop
+          when: always
 workflows:
   version: 2
   run-tests:
