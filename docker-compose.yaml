@@ -125,4 +125,17 @@ services:
       context: tests/behave
     environment:
       CLA_FRONTEND_URL: "http://cla_frontend/"
-      FALA_URL: "https://laa-fala-staging.apps.cloud-platform-live-0.k8s.integration.dsd.io"
+      FALA_URL: "http://fala:8000"
+    depends_on:
+      - fala
+  fala:
+    image: ${FALA_IMAGE:-926803513772.dkr.ecr.eu-west-1.amazonaws.com/laa-get-access/laa-fala-webapp:master}
+    ports:
+      - target: 8000
+        published: 8002
+        protocol: tcp
+        mode: host
+    environment:
+      SECRET_KEY: CHANGE_ME
+      LAALAA_API_HOST: "https://prod.laalaa.dsd.io"
+      ALLOWED_HOSTS: "*"
