@@ -1,26 +1,19 @@
-# End to end tests for Civil Legal Aid and Find A Legal Advisor
+# End to end tests for Civil Legal Aid and Find A Legal Adviser
 
-This is the monorepo codebase for the end to end tests for [Civil Legal Advice](https://checklegalaid.service.gov.uk/) and [Find A Legal Adviser](https://find-legal-advice.justice.gov.uk/).
+This is the monorepo codebase for the end to end tests for [Civil Legal Aid](https://checklegalaid.service.gov.uk/) and [Find A Legal Adviser](https://find-legal-advice.justice.gov.uk/).
 
-![Application relationship diagram](https://www.lucidchart.com/publicSegments/view/2ae20038-503d-4899-8c04-e21378678b95/image.png)
+- Details about Civil Legal Aid: https://github.com/ministryofjustice/cla_public.
+- Details about Find A Legal Adviser: https://github.com/ministryofjustice/fala.
 
-## What is Civil Legal Advice?
+These systems talk to each other:
 
-Civil Legal Advice is a service provided to the general public in England and Wales where users can obtain free legal advice from specialist legal providers relating to a range of Civil matters. This is subject to the user's matter being within scope of the service and the user passing the means eligibility test. The advice can either be given via telephone or in person depending upon the client’s unique circumstances.
+## Civil Legal Aid interactions
 
-### Applications
+![Civil Legal Aid container diagram](https://media.githubusercontent.com/media/ministryofjustice/laa-architecture-documentation/master/diagrams/get-access/civil-legal-aid-containers.png)
 
-- Public facing website available at https://checklegalaid.service.gov.uk/
-- Case Handling System used by call centre staff
+## Find a Legal Adviser interactions
 
-## What is Find A Legal Adviser?
-
-Find A Legal Adviser Search for a legal adviser or family mediator with a legal aid contract in England and Wales.
-
-### Applications
-
-- Public faciing website available at https://find-legal-advice.justice.gov.uk/
-- Administration website to upload legal aid provider csv
+![Find a Legal Adviser container diagram](https://media.githubusercontent.com/media/ministryofjustice/laa-architecture-documentation/master/diagrams/get-access/find-a-legal-adviser-containers.png)
 
 ## Codebase
 
