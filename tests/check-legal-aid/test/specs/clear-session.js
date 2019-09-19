@@ -26,11 +26,11 @@ module.exports = {
     client.init().maximizeWindow();
   },
 
-  "Scope diagnosis again": function(client) {
+  "Scope diagnosis again": !function(client) {
     client.scopeDiagnosis(constants.SCOPE_PATHS.debtInScope);
   },
 
-  "Interstitial page again": function(client) {
+  "Interstitial page again": !function(client) {
     client.interstitialPage();
   },
 

@@ -43,7 +43,7 @@ module.exports = {
     );
   },
 
-  "Context-dependent questions for employment status": function(client) {
+  "Context-dependent questions for employment status": !function(client) {
     client
       .back()
       .waitForElementVisible("#have_partner-0", 5000, "  - Back to /about")
@@ -76,7 +76,7 @@ module.exports = {
     });
   },
 
-  "Context-dependent text and questions for partner": function(client) {
+  "Context-dependent text and questions for partner": !function(client) {
     EMPLOYMENT_QUESTIONS.EMPLOYED.concat(EMPLOYMENT_QUESTIONS.COMMON).forEach(
       function(item) {
         client.assert.elementNotPresent(
