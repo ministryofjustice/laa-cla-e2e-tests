@@ -8,7 +8,7 @@ module.exports = {
     client.startService();
   },
 
-  "@disabled": false,
+  "@disabled": true,
   "Scope diagnosis": function(client) {
     client.scopeDiagnosis(constants.SCOPE_PATHS.debtInScope);
   },
@@ -26,15 +26,16 @@ module.exports = {
     client.init().maximizeWindow();
   },
 
-  "Scope diagnosis again": !function(client) {
+  "Scope diagnosis again": function(client) {
     client.scopeDiagnosis(constants.SCOPE_PATHS.debtInScope);
   },
 
-  "Interstitial page again": !function(client) {
+  "Interstitial page again": function(client) {
     client.interstitialPage();
   },
 
   "Check option is not selected": function(client) {
+    client.debug();
     common.checkAttributeIsNotPresent(
       client,
       'input[name="have_partner"]',
