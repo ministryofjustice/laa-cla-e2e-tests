@@ -79,7 +79,7 @@ module.exports = {
     client.end();
   },
 
-  "More validation": function(client) {
+  "More validation": !function(client) {
     client
       .startService()
       .scopeDiagnosis(constants.SCOPE_PATHS.debtInScope)
@@ -104,7 +104,7 @@ module.exports = {
     client.end();
   },
 
-  "Test outcomes": function(client) {
+  "Test outcomes": !function(client) {
     client
       .startService()
       .scopeDiagnosis(constants.SCOPE_PATHS.debtInScope)
