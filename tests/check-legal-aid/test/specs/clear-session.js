@@ -35,7 +35,6 @@ module.exports = {
   },
 
   "Check option is not selected": function(client) {
-    client.debug();
     common.checkAttributeIsNotPresent(
       client,
       'input[name="have_partner"]',
