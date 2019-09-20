@@ -12,8 +12,12 @@ var STATIC_PAGES = [
     headline: "Terms and conditions and privacy"
   },
   {
-    url: "/feedback",
-    headline: "Your feedback"
+    url: "/online-safety",
+    headline: "Staying safe online"
+  },
+  {
+    url: "/reasons-for-contacting",
+    headline: "Before you contact Civil Legal Advice"
   }
 ];
 
