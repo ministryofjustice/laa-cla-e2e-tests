@@ -13,6 +13,7 @@ exports.command = function(waitForSelector, pageUrl, textToContain, callback) {
       .waitForElementVisible(waitForSelector, 5000,
         '  - Page is ready'
       )
+      .pause(500)
       .assert.urlContains(pageUrl,
         util.format('  - URL is %s', pageUrl)
       );

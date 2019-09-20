@@ -8,7 +8,7 @@ module.exports = {
     client.startService();
   },
 
-  "@disabled": false,
+  "@disabled": true,
   "Scope diagnosis": function(client) {
     client.scopeDiagnosis(constants.SCOPE_PATHS.debtInScope);
   },

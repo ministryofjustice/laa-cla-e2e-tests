@@ -54,7 +54,7 @@ module.exports = {
     );
   },
 
-  "Childcare fields": function(client) {
+  "Childcare fields": !function(client) {
     client
       .back()
       .waitForElementPresent(
@@ -84,7 +84,7 @@ module.exports = {
       );
   },
 
-  "Context-dependent text for partner": function(client) {
+  "Context-dependent text for partner": !function(client) {
     client.assert
       .containsText(
         "body",
