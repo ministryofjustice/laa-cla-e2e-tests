@@ -57,6 +57,8 @@
       it("should have stored all fields after reload", function() {
         utils.scrollTo(caseRef); // Firefox fix!
         caseRef.getText().then(function(text) {
+          // https://github.com/angular/protractor/issues/308
+          browser.executeScript("window.onbeforeunload = function(){};");
           browser.get(CONSTANTS.callcentreBaseUrl + text + "/");
 
           checkFields({
