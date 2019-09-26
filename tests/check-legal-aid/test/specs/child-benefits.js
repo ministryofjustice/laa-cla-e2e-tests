@@ -171,7 +171,7 @@ module.exports = {
       );
   },
 
-  "Should also see fields if benefits=no but dependants=yes": function(client) {
+  "Should also see fields if benefits=no but dependants=yes": !function(client) {
     client
       .startService()
       .scopeDiagnosis(constants.SCOPE_PATHS.debtInScope)
