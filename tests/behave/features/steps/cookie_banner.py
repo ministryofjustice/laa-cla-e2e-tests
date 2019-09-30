@@ -1,12 +1,12 @@
 from behave import given, then, when
-from nose.tools import assert_true, assert_equal, assert_greater, assert_false
-from features.helpers.cla_public import get_cla_public_url
+from nose.tools import assert_true, assert_equal
+from features.helpers.cla_public import request_cla_public_path
 
 
 @given(u'I am a user on the check legal aid start page')
 @when(u'I navigate to the check legal aid start page')
 def step_user_on_cla(context):
-    get_cla_public_url(context, 'start')
+    request_cla_public_path(context, 'start')
 
 
 @then(u'I should see a cookie consent banner')

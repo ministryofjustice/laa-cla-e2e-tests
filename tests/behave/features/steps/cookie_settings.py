@@ -1,13 +1,13 @@
 import os
 from behave import given, when, then
 from nose.tools import assert_true, assert_equal
-from features.helpers.cla_public import get_cla_public_url
+from features.helpers.cla_public import request_cla_public_path
 from features.steps.page import get_ga_ids_on_page
 
 
 @given(u'I am on the check legal aid cookie settings page')
 def step_on_cla_cookie_settings_page(context):
-    get_cla_public_url(context, 'cookie-settings')
+    request_cla_public_path(context, 'cookie-settings')
 
 
 @then(u'all cookie settings should be off')
@@ -50,14 +50,14 @@ def step_submit_cookie_settings_form(context):
     submit_btn.click()
 
 
-@then(u'MOJ Google analytics tracking should only be the tracking code present')
+@then(u'MOJ Google analytics tracking should be the only tracking code present')
 def step_moj_ga_code_should_only_be_present(context):
     moj_ga_tracking_id = get_moj_ga_id()
     tracking_ids = get_ga_ids_on_page(context)
     assert_equal([moj_ga_tracking_id], tracking_ids)
 
 
-@then(u'GDS Google analytics tracking should only be the tracking code present')
+@then(u'GDS Google analytics tracking should be the only tracking code present')
 def step_gds_ga_code_should_only_be_present(context):
     gds_ga_tracking_id = get_gds_ga_id()
     tracking_ids = get_ga_ids_on_page(context)

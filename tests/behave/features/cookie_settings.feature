@@ -9,14 +9,14 @@ Feature: Cookie consent settings
     When I approve Ministry of Justice cookies
     And I submit the cookie settings form
     And I navigate to the check legal aid start page
-		Then MOJ Google analytics tracking should only be the tracking code present
+    Then MOJ Google analytics tracking should be the only tracking code present
 
   Scenario: Consent is granted only for GDS cookies
     Given I am on the check legal aid cookie settings page
     When I approve Government Digital Service cookies
     And I submit the cookie settings form
     And I navigate to the check legal aid start page
-    Then GDS Google analytics tracking should only be the tracking code present
+    Then GDS Google analytics tracking should be the only tracking code present
 
   Scenario: Consent is granted for both MOJ and GDS cookies
     Given I am on the check legal aid cookie settings page
