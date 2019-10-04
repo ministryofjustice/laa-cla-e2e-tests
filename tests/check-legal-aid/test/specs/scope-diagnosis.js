@@ -28,9 +28,12 @@ var scenarios = [
   constants.SCOPE_PATHS.clinnegFaceToFace,
   constants.SCOPE_PATHS.domesticAbuseContact,
   constants.SCOPE_PATHS.debtOutOfScope,
-  constants.SCOPE_PATHS.debtInScope
+  constants.SCOPE_PATHS.debtInScope,
 ];
-
+Object.keys(constants.SCOPE_PATHS.allInScope).forEach(function(key){
+	var scenario = constants.SCOPE_PATHS.allInScope[key];
+	scenarios.push(scenario);
+});
 module.exports = {
   "@disabled": false,
   "Scope diagnosis scenarios": function(client) {
@@ -41,6 +44,9 @@ module.exports = {
         .startService()
         .scopeDiagnosis(scenario)
         .ensureCorrectPage(scenarioType.identifier, scenarioType.destination);
+      if (scenario.hasOwnProperty("category") && scenario.category != null) {
+        client.ensureFalaLinkCategory(".field-more-info-toggle", scenario.category);
+      }
     });
 
     client.end();
