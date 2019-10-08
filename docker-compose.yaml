@@ -50,6 +50,8 @@ services:
       RAVEN_CONFIG_DSN: ""
       RAVEN_CONFIG_SITE: ""
       LAALAA_API_HOST: "https://prod.laalaa.dsd.io"
+      MOJ_GA_ID: "UA-XXXXXXXX-X1"
+      GDS_GA_ID: "UA-XXXXXXXX-X2"
     depends_on:
       - cla_backend
     external_links:
@@ -126,8 +128,12 @@ services:
     environment:
       CLA_FRONTEND_URL: "http://cla_frontend/"
       FALA_URL: "http://fala:8000"
+      CLA_PUBLIC_URL: "http://cla_public"
+      MOJ_GA_ID: "UA-XXXXXXXX-X1"
+      GDS_GA_ID: "UA-XXXXXXXX-X2"
     depends_on:
       - fala
+      - cla_public
 
   fala:
     image: ${FALA_IMAGE:-926803513772.dkr.ecr.eu-west-1.amazonaws.com/laa-get-access/laa-fala-webapp:master}

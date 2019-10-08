@@ -5,7 +5,9 @@ var nightwatch = require("../../nightwatch.conf")
 
 module.exports = {
   "Start page": function(client) {
-    client.startService();
+    client.startService()
+    .acceptAllCookies()
+    ;
   },
   "@disabled": false,
   "Scope diagnosis": function(client) {

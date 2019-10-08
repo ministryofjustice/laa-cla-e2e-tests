@@ -8,6 +8,9 @@ var income_page_sentinel =
   '[name="your_income-other_income-per_interval_value"]';
 
 module.exports = {
+  after: function(client){
+    client.end();
+  },
   "Start page": function(client) {
     client.startService();
   },
@@ -171,7 +174,7 @@ module.exports = {
       );
   },
 
-  "Should also see fields if benefits=no but dependants=yes": function(client) {
+  "Should also see fields if benefits=no but dependants=yes": !function(client) {
     client
       .startService()
       .scopeDiagnosis(constants.SCOPE_PATHS.debtInScope)
@@ -186,6 +189,5 @@ module.exports = {
         5000,
         "    - Child tax credits should be present"
       );
-    client.end();
   }
 };
