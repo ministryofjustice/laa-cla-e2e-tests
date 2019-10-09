@@ -1,6 +1,7 @@
 "use strict";
 
 var constants = require("../modules/constants");
+var allInScopePaths = require("../modules/all-inscope-paths")
 
 var scenarioTypes = {
   outOfScope: {
@@ -28,10 +29,10 @@ var scenarios = [
   constants.SCOPE_PATHS.clinnegFaceToFace,
   constants.SCOPE_PATHS.domesticAbuseContact,
   constants.SCOPE_PATHS.debtOutOfScope,
-  constants.SCOPE_PATHS.debtInScope,
+  constants.SCOPE_PATHS.debtInScope
 ];
-Object.keys(constants.SCOPE_PATHS.allInScope).forEach(function(key){
-	var scenario = constants.SCOPE_PATHS.allInScope[key];
+Object.keys(allInScopePaths.SCOPE_PATHS.allInScope).forEach(function(key){
+	var scenario = allInScopePaths.SCOPE_PATHS.allInScope[key];
 	scenarios.push(scenario);
 });
 module.exports = {
