@@ -1,6 +1,7 @@
 "use strict";
 
 var constants = require("../modules/constants");
+var allInScopePaths = require("../modules/all-inscope-paths")
 
 var scenarioTypes = {
   outOfScope: {
@@ -30,7 +31,10 @@ var scenarios = [
   constants.SCOPE_PATHS.debtOutOfScope,
   constants.SCOPE_PATHS.debtInScope
 ];
-
+Object.keys(allInScopePaths.SCOPE_PATHS.allInScope).forEach(function(key){
+	var scenario = allInScopePaths.SCOPE_PATHS.allInScope[key];
+	scenarios.push(scenario);
+});
 module.exports = {
   "@disabled": false,
   "Scope diagnosis scenarios": function(client) {
@@ -41,6 +45,9 @@ module.exports = {
         .startService()
         .scopeDiagnosis(scenario)
         .ensureCorrectPage(scenarioType.identifier, scenarioType.destination);
+      if (scenario.hasOwnProperty("category") && scenario.category != null) {
+        client.ensureFalaLinkCategory(".field-more-info-toggle", scenario.category);
+      }
     });
 
     client.end();
