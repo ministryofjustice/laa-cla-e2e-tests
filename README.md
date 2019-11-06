@@ -9,11 +9,11 @@ These systems talk to each other:
 
 ## Civil Legal Aid interactions
 
-![Civil Legal Aid container diagram](https://media.githubusercontent.com/media/ministryofjustice/laa-architecture-documentation/master/diagrams/get-access/civil-legal-aid-containers.png)
+![Civil Legal Aid container diagram](https://media.githubusercontent.com/media/ministryofjustice/laa-architectural-diagrams/master/diagrams/get-access/civil-legal-aid-containers.png)
 
 ## Find a Legal Adviser interactions
 
-![Find a Legal Adviser container diagram](https://media.githubusercontent.com/media/ministryofjustice/laa-architecture-documentation/master/diagrams/get-access/find-a-legal-adviser-containers.png)
+![Find a Legal Adviser container diagram](https://media.githubusercontent.com/media/ministryofjustice/laa-architectural-diagrams/master/diagrams/get-access/find-a-legal-adviser-containers.png)
 
 ## Codebase
 
