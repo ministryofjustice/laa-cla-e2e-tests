@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Runs the Case Handling System tests",
   "scripts": {
-    "test": "protractor"
+    "test": "protractor --specs='/Users/saidshire/code/get-access/laa-cla-e2e-tests/tests/case-handling-system/test/case.js'"
   },
   "author": "",
   "license": "ISC",
